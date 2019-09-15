@@ -42,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,int resultCode,Intent intent){
         if(requestCode == REQ_CODE){
             String data = intent.getStringExtra("result");
-            textView.setText("Calculate 34*25="+data);
-            Toast.makeText(MainActivity.this,"你计算的结果为："+data,Toast.LENGTH_LONG).show();
+            if(data.equals("")){
+
+            }else{
+                textView.setText("Calculate 34*25="+data);
+                Toast.makeText(MainActivity.this,"你计算的结果为："+data,Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

@@ -42,9 +42,9 @@ public class Calculater extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculater);
         editText = (TextView)findViewById(R.id.textView);
-        init();
         ButtonInit();
         setButtonListener();
+        init();
     }
 
     private void init(){
@@ -56,7 +56,7 @@ public class Calculater extends AppCompatActivity {
             Toast.makeText(Calculater.this,"欢迎使用",Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(Calculater.this,"用户名或者密码错误",Toast.LENGTH_LONG).show();
-            finish();
+            finishselect("");
         }
     }
     private void ButtonInit(){
@@ -193,10 +193,26 @@ public class Calculater extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("result",result);
                 setResult(RESULT_OK,intent);
-                finish();
+                finishselect("result");
             }
         });
     }
 
+
+    private void finishselect(String data){
+        if(data == "result"){
+
+        }else{
+            Intent intent = new Intent();
+            intent.putExtra("result","");
+            setResult(RESULT_OK,intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        finishselect("");
+    }
 
 }
